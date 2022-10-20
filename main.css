@@ -3,6 +3,7 @@ body {
 }
 
 #input {
+	height: 30px;
 	width: calc(100% - 6px);
 	font-size: inherit;
 	border: 1px solid #000;
@@ -10,6 +11,6 @@ body {
 }
 
 #output {
-	min-height: 27.5px;
+	min-height: 30px;
 	border: 1px solid #000;
 }
