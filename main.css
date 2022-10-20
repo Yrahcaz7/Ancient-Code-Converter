@@ -2,6 +2,10 @@ body {
 	font-size: 24px;
 }
 
+.small {
+	font-size: 18px;
+}
+
 #input {
 	height: 30px;
 	width: calc(100% - 6px);
