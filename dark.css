@@ -1,0 +1,8 @@
+html, #input, #output, button {
+    background-color: #000 !important;
+    color: #fff !important;
+}
+
+#input, #output, button {
+    border-color: #fff !important;
+}

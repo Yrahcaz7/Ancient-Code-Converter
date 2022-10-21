@@ -20,3 +20,17 @@ document.addEventListener("input", () => {
 	output = output.replace(/[,=!><\s]/g, ""); // delete extra chars
 	document.getElementById("output").innerHTML = output;
 });
+
+function dark_mode() {
+	if (document.getElementById("dark_mode_css")) return;
+	const add = document.createElement("link");
+	add.id = "dark_mode_css";
+	add.rel = "stylesheet";
+	add.href = "dark.css";
+	document.getElementsByTagName("head")[0].appendChild(add);
+};
+
+function light_mode() {
+	if (!document.getElementById("dark_mode_css")) return;
+	document.getElementById("dark_mode_css").remove();
+};
