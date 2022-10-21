@@ -7,7 +7,7 @@
 	<script src="main.js"></script>
 </head>
 
-<body>
+<body onload="setup_canvas()">
 	<div class="small">A note of importance: All numbers have to be integers or fractions. &#8476 represents any valid number.</div>
 	<hr>Input<hr><div class="small">
 		Another note of importance: if &#402 is any expression and &#8469 is any positive integer, then:<br>
@@ -21,4 +21,5 @@
 	<div id="output"></div><hr>
 	<button onclick="light_mode()">Light Mode</button>
 	<button onclick="dark_mode()">Dark Mode</button>
+	<hr><div id="frame"><canvas id="canvas" width="0" height="100"></canvas></div>
 </body>

@@ -34,3 +34,16 @@ function light_mode() {
 	if (!document.getElementById("dark_mode_css")) return;
 	document.getElementById("dark_mode_css").remove();
 };
+
+var ctx;
+
+function setup_canvas() {
+	ctx = document.getElementById("canvas").getContext("2d");
+	ctx.imageSmoothingEnabled = false;
+};
+
+function update_cavas_size(px) {
+	if (!document.getElementById("canvas")) return;
+	if (px < 0) px = 0;
+	document.getElementById("canvas").width = px;
+};

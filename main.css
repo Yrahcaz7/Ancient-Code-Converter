@@ -4,6 +4,8 @@ html, #input, #output, button {
 
 body {
 	font-size: 24px;
+	overscroll-behavior: none;
+	overflow-x: clip;
 }
 
 .small {
@@ -26,7 +28,12 @@ body {
 	border: 1px solid #000;
 }
 
-button {
+button, #frame {
 	background-color: #fff;
+	font-size: inherit;
 	border: 1px solid #000;
+}
+
+#frame {
+	overflow-x: scroll;
 }
