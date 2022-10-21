@@ -3,6 +3,7 @@ document.addEventListener("input", () => {
 	output = output.replace(/[^()\[\]0-9+\-*/%^,=!><]/g, ""); // delete illegal chars
 	output = output.replace(/(>|<|=)-/g, "$1 -"); // separate negatives and equalities
 	output = output.replace(/(\+|-|\*|\/|%|\^|,|>=|>|<=|<|!=){2,}/g, "$1"); // delete redundant chars
+	const numbers = output.split(/[^0-9]/g).filter(element => element);
 	output = output.replace(/\(|\[/g, "{").replace(/\)|\]/g, "}"); // convert parentheses
 	output = output.replace(/\d{1,}/g, "&#8862"); // convert numbers
 	output = output.replace(/\+/g, "&#45"); // convert addition
@@ -19,6 +20,7 @@ document.addEventListener("input", () => {
 	output = output.replace(/!=/g, "[||").replace(/=/g, "||"); // convert equals
 	output = output.replace(/[,=!><\s]/g, ""); // delete extra chars
 	document.getElementById("output").innerHTML = output;
+	print_result(output, numbers);
 });
 
 function dark_mode() {
@@ -40,6 +42,10 @@ var ctx;
 function setup_canvas() {
 	ctx = document.getElementById("canvas").getContext("2d");
 	ctx.imageSmoothingEnabled = false;
+};
+
+function print_result(string, numbers) {
+	// ctx stuff here
 };
 
 function update_cavas_size(px) {
