@@ -55,7 +55,7 @@ function print_image(image, offset = 0) {
 
 function print_result(string = "", numbers = []) {
 	update_cavas_size(0);
-	update_cavas_size((((string.match(/&#8862|&#8853|&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) + ((string.match(/&#12456|&#135&#135/g) || []).length * 6) + ((string.match(/\|\|/g) || []).length * 5) + ((string.match(/\{|\}/g) || []).length * 4) + ((string.match(/\]/g) || []).length * 3) + ((string.match(/\[/g) || []).length * 2) + (string.match(/\s/g) || []).length + 2) * 10);
+	update_cavas_size((((string.match(/&#8862|&#8853|&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) + ((string.match(/&#12456|&#135&#135/g) || []).length * 6) + ((string.match(/\|\|/g) || []).length * 5) + ((string.match(/\{|\}/g) || []).length * 4) + ((string.match(/\]/g) || []).length * 3) + ((string.match(/\[/g) || []).length * 2) + (string.match(/\s|\[(\|\||&#12456|&#135&#135)/g) || []).length + 2) * 10);
 	var remain = "" + string, offset = 0;
 	while (remain) {
 		if (remain.startsWith("&#8862")) {
@@ -101,6 +101,7 @@ function print_result(string = "", numbers = []) {
 			remain = remain.replace("&#135&#135", "");
 			offset += 6;
 		} else if (remain.startsWith("[")) {
+			if (remain.startsWith("[||") || remain.startsWith("[&#12456") || remain.startsWith("[&#135&#135")) offset++;
 			print_image(img.not, offset);
 			remain = remain.replace("[", "");
 			offset += 2;
