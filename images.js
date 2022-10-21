@@ -8,12 +8,13 @@ const img = {
 	bar: new Image,
 	close_left: new Image,
 	close_right: new Image,
+	dash: new Image,
 	dash_hole: new Image,
 	dash_snake: new Image,
-	dash: new Image,
 	double_line: new Image,
 	hash: new Image,
 	not: new Image,
+	to: new Image,
 };
 
 for (const image in img) {
