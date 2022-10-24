@@ -6,3 +6,7 @@ html, #input, #output, button {
 #input, #output, button {
     border-color: #fff !important;
 }
+
+#frame {
+    border: none;
+}
