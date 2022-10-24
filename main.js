@@ -119,4 +119,5 @@ function update_cavas_size(px) { // changes canvas size (and clears it)
 	if (!document.getElementById("canvas")) return;
 	if (px < 0) px = 0;
 	document.getElementById("canvas").width = px;
+	setup_canvas();
 };
