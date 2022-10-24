@@ -28,7 +28,7 @@ function dark_mode() { // activates dark mode
 	const add = document.createElement("link");
 	add.id = "dark_mode_css";
 	add.rel = "stylesheet";
-	add.href = "dark.css";
+	add.href = "css/dark.css";
 	document.getElementsByTagName("head")[0].appendChild(add);
 };
 
