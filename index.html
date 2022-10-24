@@ -10,15 +10,25 @@
 
 <body onload="setup_canvas()">
 	<div class="small">A note of importance: All numbers have to be integers or fractions. &#8476 represents any valid number.</div>
-	<hr>Input<hr><div class="small">
-		Another note of importance: if &#402 is any expression and &#8469 is any positive integer, then:<br>
-		Exponentiation is limited to &#8476^&#8469 and (&#402)^&#8469.<br>
-		However, you can do &#8476<sub>1</sub>^(&#8469, &#8476<sub>2</sub>) which means &#8476<sub>1</sub>...&#215&#8476<sub>2</sub>, &#8469 times (&#8476<sub>1</sub>&#215&#8476<sub>2</sub>&#215&#8476<sub>2</sub>&#215&#8476<sub>2</sub>...)</div><hr>
+	<hr>Input<hr>
+		<details class="small">
+			<summary>
+				Notes
+			</summary>
+			If &#402 is any expression and &#8469 is any positive integer, then:<br>
+			Exponentiation is limited to &#8476^&#8469 and (&#402)^&#8469.<br>
+			However, you can do &#8476<sub>1</sub>^(&#8469, &#8476<sub>2</sub>) which means &#8476<sub>1</sub>...&#215&#8476<sub>2</sub>, &#8469 times (&#8476<sub>1</sub>&#215&#8476<sub>2</sub>&#215&#8476<sub>2</sub>&#215&#8476<sub>2</sub>...)
+		</details><hr>
 	<input id="input" type="text">
-	<hr>Output<hr><div class="small">
-		Yet another note of importance: if &#8860 is an operator, then:<br>
-		&#8862&#8860&#8853 = taking the &#8860&#8862 of &#8862, &#8853 times (i.e. the hyperoperation after &#8860)<br>
-		&#8862<sub>1</sub>&#8860{&#8853&#8862<sub>2</sub>} = taking the &#8860&#8862<sub>2</sub> of &#8862<sub>1</sub>, &#8853 times</div><hr>
+	<hr>Output<hr>
+		<details class="small">
+			<summary>
+				Notes
+			</summary>
+			If &#8860 is an operator, then:<br>
+			&#8862&#8860&#8853 = taking the &#8860&#8862 of &#8862, &#8853 times (i.e. the hyperoperation after &#8860)<br>
+			&#8862<sub>1</sub>&#8860{&#8853&#8862<sub>2</sub>} = taking the &#8860&#8862<sub>2</sub> of &#8862<sub>1</sub>, &#8853 times
+		</details><hr>
 	<div id="output"></div><hr>
 	<div id="frame"><canvas id="canvas" width="0" height="90"></canvas></div><hr>
 	<button onclick="light_mode()">Light Mode</button>
