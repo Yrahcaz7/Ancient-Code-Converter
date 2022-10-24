@@ -15,6 +15,7 @@ const img = {
 	double_line: new Image,
 	hash: new Image,
 	not: new Image,
+	not_ex: new Image,
 	to: new Image,
 };
 

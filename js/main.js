@@ -117,7 +117,8 @@ function print_result(string = "", numbers = []) { // prints the result
 			offset += 6;
 		} else if (remain.startsWith("[")) { // prints [
 			if (remain.startsWith("[||") || remain.startsWith("[&#12456") || remain.startsWith("[&#135&#135")) offset++;
-			print_image(img.not, offset);
+			if (remain.startsWith("[{")) print_image(img.not_ex, offset);
+			else print_image(img.not, offset);
 			remain = remain.replace("[", "");
 			offset += 2;
 		} else if (remain.startsWith("]")) { // prints ]
