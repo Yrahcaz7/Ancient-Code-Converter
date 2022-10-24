@@ -62,6 +62,14 @@ function print_result(string = "", numbers = []) { // prints the result
 			print_image(img.tile.center[0], offset + 3);
 			remain = remain.replace("&#8862", "");
 			offset += 7;
+		} else if (remain.startsWith("&#8853_|&#8254")) { // prints ⊕_|‾ (special case)
+			print_image(img.tile.left[0], offset);
+			print_image(img.tile.right[0], offset + 3);
+			offset += 7;
+			if (remain.startsWith("&#8853_|&#8254{")) print_image(img.dash_snake_ex[1], offset - 2);
+			else print_image(img.dash_snake_ex[0], offset - 2);
+			remain = remain.replace("&#8853_|&#8254", "");
+			offset += 7;
 		} else if (remain.startsWith("&#8853")) { // prints ⊕
 			print_image(img.tile.left[0], offset);
 			print_image(img.tile.right[0], offset + 3);
@@ -75,6 +83,13 @@ function print_result(string = "", numbers = []) { // prints the result
 			print_image(img.close_left, offset);
 			remain = remain.replace("{", "");
 			offset += 4;
+		} else if (remain.startsWith("}_|&#8254")) { // prints }_|‾ (special case)
+			print_image(img.close_right, offset);
+			offset += 4;
+			if (remain.startsWith("}_|&#8254{")) print_image(img.dash_snake_ex[1], offset - 2);
+			else print_image(img.dash_snake_ex[0], offset - 2);
+			remain = remain.replace("}_|&#8254", "");
+			offset += 7;
 		} else if (remain.startsWith("}")) { // prints }
 			print_image(img.close_right, offset);
 			remain = remain.replace("}", "");
@@ -84,7 +99,8 @@ function print_result(string = "", numbers = []) { // prints the result
 			remain = remain.replace("&#45O&#45", "");
 			offset += 7;
 		} else if (remain.startsWith("_|&#8254")) { // prints _|‾
-			print_image(img.dash_snake, offset);
+			if (remain.startsWith("_|&#8254{")) print_image(img.dash_snake_ex[2], offset);
+			else print_image(img.dash_snake, offset);
 			remain = remain.replace("_|&#8254", "");
 			offset += 7;
 		} else if (remain.startsWith("&#45")) { // prints -
