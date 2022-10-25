@@ -13,13 +13,12 @@ function get_number_offset(numbers = []) {
 	return offset;
 };
 
-function print_number(number, offset, round = false, merge = false) {
+function print_number(number, offset, round = false) {
 	var ids = get_num_display_ids(number);
 	for (let index = 0; index < ids.length; index++) {
 		if (round) {
 			if (index == 0) {
-				if (merge) print_image(img.tile.merge[ids[index]], offset);
-				else print_image(img.tile.left[ids[index]], offset);
+				print_image(img.tile.left[ids[index]], offset);
 			} else if (index == ids.length - 1) {
 				print_image(img.tile.right[ids[index]], offset);
 			} else {

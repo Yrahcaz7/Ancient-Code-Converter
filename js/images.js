@@ -2,7 +2,6 @@ const img = {
 	tile: {
 		center: [new Image, new Image, new Image, new Image],
 		left: [new Image, new Image, new Image, new Image],
-		merge: [new Image, new Image, new Image, new Image],
 		right: [new Image, new Image, new Image, new Image],
 	},
 	bar: new Image,
