@@ -7,6 +7,7 @@ const img = {
 	bar: new Image,
 	close_left: new Image,
 	close_right: new Image,
+	core: new Image,
 	dash_hole: new Image,
 	dash_snake: new Image,
 	dash_snake_ex: [new Image, new Image, new Image],
