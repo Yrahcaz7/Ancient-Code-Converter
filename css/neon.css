@@ -3,10 +3,6 @@ html, #input, #output, button {
 	color: #0f0 !important;
 }
 
-#input, #output, #frame, button {
-	border-color: #0f0 !important;
-}
-
-hr {
+#input, #output, #frame, hr, button {
 	border-color: #0f0 !important;
 }
