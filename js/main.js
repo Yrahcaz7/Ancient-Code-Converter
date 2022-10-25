@@ -23,8 +23,14 @@ document.addEventListener("input", () => {
 	print_result(output, numbers);
 });
 
+function light_mode() { // activates light mode
+	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
+	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
+};
+
 function dark_mode() { // activates dark mode
 	if (document.getElementById("dark_mode_css")) return;
+	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
 	const add = document.createElement("link");
 	add.id = "dark_mode_css";
 	add.rel = "stylesheet";
@@ -32,9 +38,14 @@ function dark_mode() { // activates dark mode
 	document.getElementsByTagName("head")[0].appendChild(add);
 };
 
-function light_mode() { // activates light mode
-	if (!document.getElementById("dark_mode_css")) return;
-	document.getElementById("dark_mode_css").remove();
+function neon_mode() { // activates neon mode
+	if (document.getElementById("neon_mode_css")) return;
+	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
+	const add = document.createElement("link");
+	add.id = "neon_mode_css";
+	add.rel = "stylesheet";
+	add.href = "css/neon.css";
+	document.getElementsByTagName("head")[0].appendChild(add);
 };
 
 var ctx;

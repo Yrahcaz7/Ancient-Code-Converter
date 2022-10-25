@@ -1,12 +1,16 @@
 html, #input, #output, button {
-    background-color: #000 !important;
-    color: #fff !important;
+	background-color: #000 !important;
+	color: #fff !important;
 }
 
 #input, #output, button {
-    border-color: #fff !important;
+	border-color: #fff !important;
 }
 
 #frame {
-    border: none;
+	border-color: #ccc !important;
+}
+
+hr {
+	border-color: #fff !important;
 }

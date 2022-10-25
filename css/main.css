@@ -1,4 +1,4 @@
-html, #input, #output, button {
+html, #input, #output, hr, button {
 	transition-duration: 1s;
 }
 
@@ -47,4 +47,8 @@ canvas {
 	image-rendering: -ms-crisp-edges;
 	image-rendering: crisp-edges;
 	image-rendering: pixelated;
+}
+
+hr {
+	border: 1px inset #ccc;
 }
