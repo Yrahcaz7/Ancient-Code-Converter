@@ -24,12 +24,25 @@ document.addEventListener("input", () => {
 });
 
 function light_mode() { // activates light mode
+	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
 	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
 	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
 };
 
+function dim_mode() { // activates dim mode
+	if (document.getElementById("dim_mode_css")) return;
+	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
+	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
+	const add = document.createElement("link");
+	add.id = "dim_mode_css";
+	add.rel = "stylesheet";
+	add.href = "css/dim.css";
+	document.getElementsByTagName("head")[0].appendChild(add);
+};
+
 function dark_mode() { // activates dark mode
 	if (document.getElementById("dark_mode_css")) return;
+	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
 	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
 	const add = document.createElement("link");
 	add.id = "dark_mode_css";
@@ -40,6 +53,7 @@ function dark_mode() { // activates dark mode
 
 function neon_mode() { // activates neon mode
 	if (document.getElementById("neon_mode_css")) return;
+	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
 	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
 	const add = document.createElement("link");
 	add.id = "neon_mode_css";

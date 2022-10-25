@@ -1,0 +1,12 @@
+html, #input, #output, button {
+	background-color: #ccc !important;
+	color: #444 !important;
+}
+
+#input, #output, #frame, button {
+	border-color: #444 !important;
+}
+
+hr {
+	border-color: #888 !important;
+}
