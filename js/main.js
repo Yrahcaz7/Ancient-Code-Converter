@@ -136,7 +136,7 @@ function update_cavas_size(px) { // changes canvas size (and clears it)
 	if (!document.getElementById("canvas")) return;
 	if (px < 0) px = 0;
 	if (px > 32767) px = 32767;
-	if (document.getElementById("warning")) {
+	if (document.getElementById("warning")) { // displays large size warnings
 		if (px == 32767) document.getElementById("warning").innerHTML = "Large size warning: cannot display more than a 32,767px width on any device or browser. Cutting off at 32,767px.";
 		else if (px > 8192) document.getElementById("warning").innerHTML = "Large size warning: will not display on some mobile devices and IE (internet explorer.)";
 		else if (px > 4096) document.getElementById("warning").innerHTML = "Large size warning: will not display on some mobile devices.";
