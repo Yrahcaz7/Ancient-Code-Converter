@@ -3,7 +3,7 @@ document.addEventListener("input", () => {
 	output = output.replace(/[^()\[\]0-9+\-*/%^,=!><]/g, ""); // delete illegal chars
 	output = output.replace(/(>|<|=)-/g, "$1 -"); // separate negatives and equalities
 	output = output.replace(/(\+|-|\*|\/|%|\^|,|>=|>|<=|<|!=){2,}/g, "$1"); // delete redundant chars
-	const numbers = output.split(/[^0-9]/g).filter(element => element);
+	const numbers = output.split(/[^0-9]/g).filter(element => element).map(Number);
 	output = output.replace(/\(|\[/g, "{").replace(/\)|\]/g, "}"); // convert parentheses
 	output = output.replace(/\d{1,}/g, "&#8862"); // convert numbers
 	output = output.replace(/\+/g, "&#45"); // convert addition
@@ -54,27 +54,21 @@ function print_image(image, offset = 0) { // print an image
 };
 
 function print_result(string = "", numbers = []) { // prints the result
-	update_cavas_size((((string.match(/&#8862|&#8853|&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) + ((string.match(/&#12456|&#135&#135/g) || []).length * 6) + ((string.match(/\|\|/g) || []).length * 5) + ((string.match(/\{|\}/g) || []).length * 4) + ((string.match(/\]/g) || []).length * 3) + ((string.match(/\[/g) || []).length * 2) + (string.match(/\s|\[(\|\||&#12456|&#135&#135)/g) || []).length + 2) * 10);
+	update_cavas_size((((string.match(/&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) + ((string.match(/&#12456|&#135&#135/g) || []).length * 6) + ((string.match(/\|\|/g) || []).length * 5) + ((string.match(/\{|\}/g) || []).length * 4) + ((string.match(/\]/g) || []).length * 3) + ((string.match(/\[/g) || []).length * 2) + (string.match(/\s|\[(\|\||&#12456|&#135&#135)/g) || []).length + get_number_offset(numbers) + 2) * 10);
 	var remain = "" + string, offset = 0;
 	while (remain) {
 		if (remain.startsWith("&#8862")) { // prints ⊞
-			print_image(img.tile.center[0], offset);
-			print_image(img.tile.center[0], offset + 3);
+			offset = print_number(numbers.shift(), offset);
 			remain = remain.replace("&#8862", "");
-			offset += 7;
 		} else if (remain.startsWith("&#8853_|&#8254")) { // prints ⊕_|‾ (special case)
-			print_image(img.tile.left[0], offset);
-			print_image(img.tile.right[0], offset + 3);
-			offset += 7;
+			offset = print_number(numbers.shift(), offset, true);
 			if (remain.startsWith("&#8853_|&#8254{")) print_image(img.dash_snake_ex[1], offset - 2);
 			else print_image(img.dash_snake_ex[0], offset - 2);
 			remain = remain.replace("&#8853_|&#8254", "");
 			offset += 7;
 		} else if (remain.startsWith("&#8853")) { // prints ⊕
-			print_image(img.tile.left[0], offset);
-			print_image(img.tile.right[0], offset + 3);
+			offset = print_number(numbers.shift(), offset, true);
 			remain = remain.replace("&#8853", "");
-			offset += 7;
 		} else if (remain.startsWith("&#12456")) { // prints エ
 			print_image(img.bar, offset);
 			remain = remain.replace("&#12456", "");
