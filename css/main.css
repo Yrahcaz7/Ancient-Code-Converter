@@ -20,7 +20,7 @@ body {
 	outline: none;
 }
 
-#output {
+#simplify, #output {
 	min-height: 30px;
 	background-color: #fff;
 	vertical-align: middle;
