@@ -26,8 +26,8 @@ document.addEventListener("input", () => {
 
 function calculate(string = "") {
 	// don't allow octal literals
-	string = string.replace(/^0(?=[0-9])/, "");
-	string = string.replace(/([^0-9])0(?=[0-9])/g, "$1");
+	string = string.replace(/^0+(?=[0-9])/, "");
+	string = string.replace(/([^0-9])0+(?=[0-9])/g, "$1");
 	// fix exponentiation
 	string = string.replace(/\^/g, "**");
 	// fix parentheses
