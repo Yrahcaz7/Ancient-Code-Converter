@@ -1,8 +1,8 @@
-html, #input, #output, button {
+html, #input, #simplify, #output, button {
 	background-color: #000 !important;
 	color: #0f0 !important;
 }
 
-#input, #output, #frame, hr, button {
+#input, #simplify, #output, #frame, hr, button {
 	border-color: #0f0 !important;
 }

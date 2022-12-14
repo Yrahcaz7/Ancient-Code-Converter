@@ -1,4 +1,4 @@
-html, #input, #output, #frame, hr, button {
+html, #input, #simplify, #output, #frame, hr, button {
 	transition-duration: 1s;
 }
 
