@@ -1,7 +1,7 @@
 :root {
-	--bg-color: #fff;
-	--txt-color: #000;
-	--hr-color: #ccc;
+	--bg-color: #F0F0F0;
+	--txt-color: #101010;
+	--hr-color: #C0C0C0;
 }
 
 * {
@@ -37,6 +37,7 @@ hr {
 	min-height: 1.25em;
 	vertical-align: middle;
 	line-height: 1.25em;
+	word-break: break-all;
 }
 
 #frame {
@@ -56,4 +57,10 @@ canvas {
 
 button {
 	margin-top: 0.25em;
+}
+
+@supports (-webkit-hyphens: none) {
+	#frame, canvas {
+		background-color: #F0F0F0;
+	} 
 }

@@ -1,4 +1,4 @@
-const img = {
+const I = {
 	tile: {
 		center: [new Image, new Image, new Image, new Image],
 		left: [new Image, new Image, new Image, new Image],
@@ -19,20 +19,20 @@ const img = {
 	to: new Image,
 };
 
-for (const image in img) {
-	if (Object.hasOwnProperty.call(img, image)) {
+for (const image in I) {
+	if (Object.hasOwnProperty.call(I, image)) {
 		if (image == "tile") {
-			for (const key in img.tile) {
-				if (Object.hasOwnProperty.call(img.tile, key)) {
-					for (let index = 0; index < img.tile[key].length; index++) {
-						img.tile[key][index].src = "png/tiles/tile-" + key + "-" + index + ".png";
+			for (const key in I.tile) {
+				if (Object.hasOwnProperty.call(I.tile, key)) {
+					for (let index = 0; index < I.tile[key].length; index++) {
+						I.tile[key][index].src = "images/tiles/tile-" + key + "-" + index + ".png";
 					};
 				};
 			};
 		} else if (image == "dash_snake_ex") {
-			for (let index = 0; index < img.dash_snake_ex.length; index++) {
-				img.dash_snake_ex[index].src = "png/dash-snake-ex-" + index + ".png";
+			for (let index = 0; index < I.dash_snake_ex.length; index++) {
+				I.dash_snake_ex[index].src = "images/dash-snake-ex-" + index + ".png";
 			};
-		} else img[image].src = "png/" + image.replace(/_/g, "-") + ".png";
+		} else I[image].src = "images/" + image.replace(/_/g, "-") + ".png";
 	};
 };

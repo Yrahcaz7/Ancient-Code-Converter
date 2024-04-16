@@ -1,7 +1,6 @@
-<!DOCTYPE html>
+<html lang="en-us">
 
 <head>
-	<meta lang="en-us" charset="ISO-8859-1">
 	<title>Ancient Code Converter</title>
 	<link rel="stylesheet" href="main.css"/>
 	<script src="js/graphics.js"></script>
@@ -10,7 +9,7 @@
 	<script src="js/numbers.js"></script>
 </head>
 
-<body onload="setup_canvas()">
+<body onload="calculate_output()">
 	<div class="small">A note of importance: All numbers have to be integers or fractions. &#8476 represents any valid number.</div>
 	<hr>Input<hr>
 		<details class="small">
@@ -29,9 +28,11 @@
 		</details><hr>
 	<div id="output"></div><hr>
 	<div id="warning" class="small"></div>
-	<div id="frame"><canvas id="canvas" width="0" height="85">Brower does not support HTML5. Cannot render advanced output.</canvas></div><hr style="margin-bottom: 0.25em">
-	<button onclick="light_mode()">Light Mode</button>
-	<button onclick="dim_mode()">Dim Mode</button>
-	<button onclick="dark_mode()">Dark Mode</button>
-	<button onclick="neon_mode()">Neon Mode</button>
+	<div id="frame"><canvas id="canvas" width="0" height="90">Brower does not support HTML5. Cannot render advanced output.</canvas></div><hr style="margin-bottom: 0.25em">
+	<button onclick="change_mode(0)">Light Mode</button>
+	<button onclick="change_mode(1)">Dim Mode</button>
+	<button onclick="change_mode(2)">Dark Mode</button>
+	<button onclick="change_mode(3)">Neon Mode</button>
 </body>
+
+</html>
