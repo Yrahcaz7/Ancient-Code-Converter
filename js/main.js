@@ -9,9 +9,9 @@ function calculate_output() {
 	output = output.replace(/[^()\[\]0-9+\-*/%^,=!><]/g, ""); // delete illegal chars
 	output = output.replace(/(>|<|=)-/g, "$1 -"); // separate negatives and equalities
 	output = output.replace(/(\+|-|\*|\/|%|\^|,|>=|>|<=|<|!=){2,}/g, "$1"); // delete redundant chars
-	let numbers = output.split(/[^0-9]/g).filter(element => element).map(Number);
+	let numbers = output.split(/[^0-9]+/g).filter(val => val).map(Number);
 	output = output.replace(/\(|\[/g, "{").replace(/\)|\]/g, "}"); // convert parentheses
-	output = output.replace(/\d{1,}/g, "&#8862"); // convert numbers
+	output = output.replace(/\d+/g, "&#8862"); // convert numbers
 	output = output.replace(/\+/g, "&#45"); // convert addition
 	output = output.replace(/(\d|\})-/g, "$1&#45["); // convert subtraction
 	output = output.replace(/\*/g, "&#45O&#45"); // convert normal multiplication
@@ -27,12 +27,24 @@ function calculate_output() {
 	output = output.replace(/[,=!><]/g, ""); // delete extra chars
 	document.getElementById("output").innerHTML = output.replace(/\s/g, "");
 	// printing
-	update_cavas_size((((output.match(/&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) + ((output.match(/&#12456|&#135&#135/g) || []).length * 6) + ((output.match(/\|\|/g) || []).length * 5) + ((output.match(/\{|\}/g) || []).length * 4) + ((output.match(/\]/g) || []).length * 3) + ((output.match(/\[/g) || []).length * 2) + (output.match(/\s|\[(\|\||&#12456|&#135&#135)/g) || []).length + get_number_offset(numbers) + 2) * 10);
+	update_cavas_size((
+		((output.match(/&#45(?!O)|&#45O&#45|_\|&#8254/g) || []).length * 7) +
+		((output.match(/&#12456|&#135&#135/g) || []).length * 6) +
+		((output.match(/\|\|/g) || []).length * 5) +
+		((output.match(/\{|\}/g) || []).length * 4) +
+		((output.match(/\]/g) || []).length * 3) +
+		((output.match(/\[/g) || []).length * 2) +
+		(output.match(/\s|\[(\|\||&#12456|&#135&#135)/g) || []).length +
+		get_number_offset(numbers) + 2 +
+		(output.match(/&#8862(?=&#8862)/g) || []).length
+	) * 10);
 	let remain = "" + output, offset = 0;
 	while (remain) {
+		console.log(remain);
 		if (remain.startsWith("&#8862")) { // prints ⊞
 			offset = print_number(numbers.shift(), offset);
 			remain = remain.replace("&#8862", "");
+			if (remain.startsWith("&#8862")) offset++;
 		} else if (remain.startsWith("&#8853_|&#8254")) { // prints ⊕_|‾ (special case)
 			offset = print_number(numbers.shift(), offset, true);
 			if (remain.startsWith("&#8853_|&#8254{")) print_image(I.dash_snake_ex[1], offset - 2);

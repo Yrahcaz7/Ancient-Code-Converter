@@ -49,6 +49,5 @@ function update_cavas_size(px) {
  * @param {number} offset - the offset in scaled pixels.
  */
 function print_image(image, offset) {
-	if (!image) return;
 	ctx.drawImage(image, (offset + 1) * 10, 10, image.width * 10, image.height * 10);
 };

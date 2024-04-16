@@ -25,7 +25,7 @@ for (const image in I) {
 			for (const key in I.tile) {
 				if (Object.hasOwnProperty.call(I.tile, key)) {
 					for (let index = 0; index < I.tile[key].length; index++) {
-						I.tile[key][index].src = "images/tiles/tile-" + key + "-" + index + ".png";
+						I.tile[key][index].src = "images/tiles/" + key + "-" + index + ".png";
 					};
 				};
 			};
