@@ -1,8 +1,0 @@
-html, #input, #output, button, #frame {
-	background-color: #000 !important;
-	color: #0f0 !important;
-}
-
-#input, #output, hr, button, #frame {
-	border-color: #0f0 !important;
-}

@@ -1,43 +1,38 @@
+let mode = 0;
+
 function light_mode() { // activates light mode
-	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
-	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
-	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
+	if (mode == 0) return;
+	document.documentElement.style.setProperty("--bg-color", "#F0F0F0");
+	document.documentElement.style.setProperty("--txt-color", "#000000");
+	document.documentElement.style.setProperty("--hr-color", "#C0C0C0");
+	mode = 0;
 	on_input();
 };
 
 function dim_mode() { // activates dim mode
-	if (document.getElementById("dim_mode_css")) return;
-	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
-	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
-	const add = document.createElement("link");
-	add.id = "dim_mode_css";
-	add.rel = "stylesheet";
-	add.href = "css/dim.css";
-	document.getElementsByTagName("head")[0].appendChild(add);
+	if (mode == 1) return;
+	document.documentElement.style.setProperty("--bg-color", "#C0C0C0");
+	document.documentElement.style.setProperty("--txt-color", "#404040");
+	document.documentElement.style.setProperty("--hr-color", "#808080");
+	mode = 1;
 	on_input();
 };
 
 function dark_mode() { // activates dark mode
-	if (document.getElementById("dark_mode_css")) return;
-	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
-	if (document.getElementById("neon_mode_css")) document.getElementById("neon_mode_css").remove();
-	const add = document.createElement("link");
-	add.id = "dark_mode_css";
-	add.rel = "stylesheet";
-	add.href = "css/dark.css";
-	document.getElementsByTagName("head")[0].appendChild(add);
+	if (mode == 2) return;
+	document.documentElement.style.setProperty("--bg-color", "#101010");
+	document.documentElement.style.setProperty("--txt-color", "#F0F0F0");
+	document.documentElement.style.setProperty("--hr-color", "#C0C0C0");
+	mode = 2;
 	on_input();
 };
 
 function neon_mode() { // activates neon mode
-	if (document.getElementById("neon_mode_css")) return;
-	if (document.getElementById("dim_mode_css")) document.getElementById("dim_mode_css").remove();
-	if (document.getElementById("dark_mode_css")) document.getElementById("dark_mode_css").remove();
-	const add = document.createElement("link");
-	add.id = "neon_mode_css";
-	add.rel = "stylesheet";
-	add.href = "css/neon.css";
-	document.getElementsByTagName("head")[0].appendChild(add);
+	if (mode == 3) return;
+	document.documentElement.style.setProperty("--bg-color", "#101010");
+	document.documentElement.style.setProperty("--txt-color", "#00FF00");
+	document.documentElement.style.setProperty("--hr-color", "#00C000");
+	mode = 3;
 	on_input();
 };
 
@@ -50,9 +45,7 @@ function setup_canvas() { // technical stuff
 	ctx.webkitImageSmoothingEnabled = false;
 	ctx.msImageSmoothingEnabled = false;
 	ctx.imageSmoothingEnabled = false;
-	if (document.getElementById("dark_mode_css") || document.getElementById("neon_mode_css")) {
-		ctx.filter = "invert(1)";
-	};
+	if (mode >= 2) ctx.filter = "invert(1)";
 };
 
 function update_cavas_size(px) { // changes canvas size (and clears it)
