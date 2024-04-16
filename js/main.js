@@ -1,9 +1,10 @@
-document.addEventListener("input", () => {
+document.addEventListener("input", on_input);
+
+function on_input() {
 	var output = "" + document.getElementById("input").value;
 	output = output.replace(/[^()\[\]0-9+\-*/%^,=!><]/g, ""); // delete illegal chars
 	output = output.replace(/(>|<|=)-/g, "$1 -"); // separate negatives and equalities
 	output = output.replace(/(\+|-|\*|\/|%|\^|,|>=|>|<=|<|!=){2,}/g, "$1"); // delete redundant chars
-	calculate(output);
 	const numbers = output.split(/[^0-9]/g).filter(element => element).map(Number);
 	output = output.replace(/\(|\[/g, "{").replace(/\)|\]/g, "}"); // convert parentheses
 	output = output.replace(/\d{1,}/g, "&#8862"); // convert numbers
@@ -22,42 +23,6 @@ document.addEventListener("input", () => {
 	output = output.replace(/[,=!><]/g, ""); // delete extra chars
 	document.getElementById("output").innerHTML = output.replace(/\s/g, "");
 	print_result(output, numbers);
-});
-
-function calculate(string = "") {
-	// don't allow octal literals
-	string = string.replace(/^0+(?=[0-9])/, "");
-	string = string.replace(/([^0-9])0+(?=[0-9])/g, "$1");
-	// fix exponentiation
-	string = string.replace(/\^/g, "**");
-	// fix parentheses
-	string = string.replace(/\[/g, "(").replace(/\]/g, ")");
-	string = string.replace(/\(\)/g, "");
-	// init vars
-	let array = string.split(/>=|>|<=|<|!=|=/g);
-	let other = string.match(/>=|>|<=|<|!=|=/g) || [];
-	let output = "";
-	// run loop
-	for (let index = 0; index < array.length; index++) {
-		// fix trailing things
-		array[index] = array[index].replace(/[()+\-*/%^,=!><]+$/, "");
-		// skip if undefined
-		if (!array[index]) {
-			if (other[index] && array[index + 1].replace(/[()+\-*/%^,=!><]+$/, "")) output += other[index];
-			continue;
-		};
-		// fix parenthesis stuff
-		array[index] = array[index].replace(/([0-9])\(/g, "$1*(");
-		const parentheses = (array[index].match(/\(/g) || []).length - (array[index].match(/\)/g) || []).length;
-		if (parentheses > 0) array[index] += ")".repeat(parentheses);
-		// compute value
-		output += Function(`"use strict"; return (${array[index]})`)() + (other[index] ? other[index] : "");
-	};
-	// fix strange numbers
-	output = output.replace(/\.00000000000000[0-9]/g, "");
-	output = output.replace(/([0-9]+)\.99999999999999[0-9]/g, (substring, number) => {return "" + ((+number) + 1)});
-	// print result
-	document.getElementById("simplify").innerHTML = "Simplification: " + output;
 };
 
 function print_result(string = "", numbers = []) { // prints the result

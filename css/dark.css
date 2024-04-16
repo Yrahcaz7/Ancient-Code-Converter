@@ -1,9 +1,9 @@
-html, #input, #simplify, #output, button {
+html, #input, #output, button, #frame {
 	background-color: #000 !important;
 	color: #fff !important;
 }
 
-#input, #simplify, #output, hr, button {
+#input, #output, hr, button {
 	border-color: #fff !important;
 }
 
