@@ -40,7 +40,6 @@ function calculate_output() {
 	) * 10);
 	let remain = "" + output, offset = 0;
 	while (remain) {
-		console.log(remain);
 		if (remain.startsWith("&#8862")) { // prints ⊞
 			offset = print_number(numbers.shift(), offset);
 			remain = remain.replace("&#8862", "");

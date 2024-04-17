@@ -2,6 +2,7 @@
 	--bg-color: #F0F0F0;
 	--txt-color: #101010;
 	--hr-color: #C0C0C0;
+	--scrt-color: #F0F0F0;
 }
 
 * {
@@ -14,8 +15,25 @@ html, body {
 	font-size: x-large;
 }
 
-.small {
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+#header, details, #warning {
 	font-size: large;
+}
+
+#header {
+	line-height: 1.25em;
+	overflow-x: hidden;
+}
+
+#emojis {
+	left: 0px;
+	width: max-content;
+	letter-spacing: 1px;
+	animation: move 400s infinite linear;
 }
 
 hr {
@@ -23,8 +41,8 @@ hr {
 }
 
 #input, #output, #frame, button {
-	font-size: inherit;
 	border: 1px solid var(--txt-color);
+	font-size: inherit;
 }
 
 #input {
@@ -59,8 +77,43 @@ button {
 	margin-top: 0.25em;
 }
 
+#secret {
+	position: relative;
+	border-color: var(--scrt-color);
+	background: none;
+	color: var(--scrt-color);
+	z-index: 1;
+}
+
+#cover {
+	position: absolute;
+	top: 0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+	background: none;
+	pointer-events: none;
+	opacity: 0.25;
+}
+
 @supports (-webkit-hyphens: none) {
 	#frame, canvas {
 		background-color: #F0F0F0;
 	} 
+}
+
+@keyframes move {
+	0% {margin-left: 0px}
+	100% {margin-left: -15000px}
+}
+
+@keyframes rainbow {
+	0% {background-color: #FFD1D1}
+	14.285714285714286% {background-color: #FFE6D1}
+	28.571428571428573% {background-color: #FFF6D1}
+	42.857142857142854% {background-color: #D1FFE3}
+	57.142857142857146% {background-color: #D1F9FF}
+	71.42857142857143% {background-color: #D1DCFF}
+	85.71428571428571% {background-color: #F0D1FF}
+	100% {background-color: #FFD1D1}
 }
